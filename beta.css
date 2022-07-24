@@ -63,6 +63,7 @@ body .TodoList{
 	border-width: 0 2px 0 0;
 	white-space: nowrap;
 	overflow-x: hidden;
+	overflow-y:hidden;
 	animation: typing 2s ease;
     animation-fill-mode: forwards;
 	
