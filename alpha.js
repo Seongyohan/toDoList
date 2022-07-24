@@ -1,3 +1,7 @@
+if(!(localStorage.first)){
+   localStorage.first = "true"
+   localStorage.data = "[]"
+}
 
 
 let log = console.log,
