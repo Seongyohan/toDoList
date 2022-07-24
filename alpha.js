@@ -9,7 +9,8 @@ let log = console.log,
     date = new Date().toLocaleDateString(),
     button_add = $('.add-box button'),
     list_box = $('.list-box'),
-       list_value = '';
+    list_value = '',
+    input = $('.add-box input');
         
 window.addEventListener('load',function(){
 	let count = 2;
@@ -80,5 +81,24 @@ list_box.on('keyup','.input_typer',function(){
     if(data.id == this.parentElement.getAttribute('data_id')) {data.value = this.value}
   })
   localStorage.data = JSON.stringify(data)
+})
+input.on('keyup',function(key){
+  if(key.keyCode === 13){
+     if(!this.value == '') {
+    data.push({
+      id : Date.now(),
+      value:this.value,
+      status : false,
+      date : date
+    })
+    list_box.append(`<li class="list" data_id =${data[data.length - 1].id} style="animation: appear 2s ease forwards 1;"  >
+        <input type="checkbox" class="first" data_status =${data[data.length - 1].status}>
+        <input type="text" value="${data[data.length - 1].value}" class="input_typer">
+        <input type="checkbox" class="second">
+      </li>`)
+   this.value = "";
+   localStorage.data = JSON.stringify(data);
+  }
+  }
 })
 
